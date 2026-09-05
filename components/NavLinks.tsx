@@ -23,6 +23,28 @@ export default function NavLinks() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
+  const checkIsActive = (href: string) => {
+    if (href === "/") {
+      return pathname === "/";
+    }
+
+    if (href === "/meetings") {
+      return (
+        pathname === "/meetings" ||
+        (
+          pathname.startsWith("/meetings/") &&
+          pathname !== "/meetings/current"
+        )
+      );
+    }
+
+    if (href === "/meetings/current") {
+      return pathname === "/meetings/current";
+    }
+
+    return pathname === href;
+  };
+
   return (
     <nav aria-label="Main navigation">
       <button
@@ -53,11 +75,7 @@ export default function NavLinks() {
       </button>
       <ul className="hidden items-center gap-4 text-base font-medium sm:gap-6 md:flex">
         {links.map((link) => {
-          const isActive =
-            link.href === "/"
-              ? pathname === "/"
-              : pathname === link.href ||
-                pathname.startsWith(`${link.href}/`);
+          const isActive = checkIsActive(link.href);
 
           return (
             <li key={link.href}>
@@ -83,11 +101,7 @@ export default function NavLinks() {
         >
           <ul className="mx-auto max-w-6xl space-y-1 px-4 py-4 sm:px-6">
             {links.map((link) => {
-              const isActive =
-                link.href === "/"
-                  ? pathname === "/"
-                  : pathname === link.href ||
-                    pathname.startsWith(`${link.href}/`);
+              const isActive = checkIsActive(link.href);
 
               return (
                 <li key={link.href}>

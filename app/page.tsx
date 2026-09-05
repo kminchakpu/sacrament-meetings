@@ -14,9 +14,9 @@ export default function Home() {
         <p className="text-sm font-semibold uppercase tracking-wider text-orange-400">
           Sacrament Meeting Planner
         </p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight text-white sm:text-5xl">
-          Plan, review, and view sacrament meeting programs.
-        </h1>
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+  Plan, review, and view sacrament meeting programs.
+</h1>
         <p className="mt-6 text-lg leading-8 text-slate-300">
           View current and past meeting agendas, including announcements,
           hymns, prayers, ward business, speakers, and musical numbers.
