@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Sacrament Meetings | Kevin Minchakpu",
+    template: "%s | Sacrament Meeting Planner",
+  },
+  description:
+    "View and manage current and past sacrament meeting programs, including hymns, prayers, announcements, speakers, and ward business.",
+};
 
 export default function MeetingsLayout({
   children,
@@ -15,7 +25,6 @@ export default function MeetingsLayout({
           >
             All Meetings
           </Link>
-
           <Link
             href="/meetings/current"
             className="font-medium text-slate-700 hover:text-blue-700"
@@ -24,7 +33,6 @@ export default function MeetingsLayout({
           </Link>
         </div>
       </div>
-
       {children}
     </section>
   );
