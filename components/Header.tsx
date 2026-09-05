@@ -12,11 +12,11 @@ export default function Header() {
         <div>
           <Link
             href="/"
-            className="text-xl font-bold text-slate-200 sm:text-2xl"
+            className="font-play text-xl font-bold text-slate-200 sm:text-2xl"
           >
             Sacrament Meeting Planner
           </Link>
-          <p className="mt-1 text-sm text-orange-200">
+          <p className="font-play mt-1 text-sm text-orange-200">
             {currentDate}
           </p>
         </div>

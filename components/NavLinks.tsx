@@ -27,11 +27,11 @@ export default function NavLinks() {
     <nav aria-label="Main navigation">
       <button
         type="button"
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => setIsOpen((prev) => !prev)}
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
         aria-label="Toggle navigation menu"
-        className="flex h-10 w-10 items-center justify-center rounded-md border border-orange-300 text-slate-200 transition hover:bg-stone-700 lg:hidden"
+        className="flex h-10 w-10 items-center justify-center rounded-md border border-orange-300 text-slate-200 transition hover:bg-stone-700 md:hidden"
       >
         <div className="flex flex-col gap-1.5">
           <span
@@ -51,8 +51,7 @@ export default function NavLinks() {
           />
         </div>
       </button>
-
-      <ul className="hidden items-center gap-4 text-base font-medium sm:gap-6 lg:flex">
+      <ul className="hidden items-center gap-4 text-base font-medium sm:gap-6 md:flex">
         {links.map((link) => {
           const isActive =
             link.href === "/"
@@ -77,13 +76,12 @@ export default function NavLinks() {
           );
         })}
       </ul>
-
       {isOpen && (
         <div
           id="mobile-menu"
-          className="absolute inset-x-0 top-full z-50 border-t border-orange-200 bg-stone-800 shadow-lg lg:hidden"
+          className="absolute inset-x-0 top-full z-50 border-t border-orange-200 bg-stone-800 shadow-lg md:hidden"
         >
-          <ul className="mx-auto max-w-6xl space-y-1 px-4 py-4 sm:px-6 lg:px-8">
+          <ul className="mx-auto max-w-6xl space-y-1 px-4 py-4 sm:px-6">
             {links.map((link) => {
               const isActive =
                 link.href === "/"
