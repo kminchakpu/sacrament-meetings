@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #101828;
-  --foreground: #f8fafc;
+  --background: #F1F7EE;
+  --foreground: #242424;
 }
 
 * {
@@ -36,4 +36,10 @@ a {
 
 .font-play {
   font-family: var(--font-play), sans-serif;
+}
+
+.header {
+  background-color: #1D2F6F;
+  border-bottom: 6px solid #fdba74;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }

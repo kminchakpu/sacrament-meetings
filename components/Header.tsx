@@ -7,7 +7,7 @@ export default function Header() {
   }).format(new Date());
 
   return (
-    <header className="relative border-b border-orange-200 bg-stone-800 shadow-sm">
+    <header className="header relative">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8">
         <div>
           <Link

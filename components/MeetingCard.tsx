@@ -9,10 +9,10 @@ export default function MeetingCard({
   meeting,
 }: MeetingCardProps) {
   return (
-    <article className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
+    <article className="rounded-xl border border-slate-200 bg-[#1D2F6F] p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-medium text-blue-700">
+          <p className="text-sm font-medium text-white">
             {new Date(`${meeting.date}T00:00:00`).toLocaleDateString(
               "en-US",
               {
@@ -21,7 +21,7 @@ export default function MeetingCard({
             )}
           </p>
 
-          <h2 className="mt-2 text-xl font-bold text-slate-900">
+          <h2 className="mt-2 text-xl font-bold text-amber-200">
             {meeting.meetingType.charAt(0).toUpperCase() +
               meeting.meetingType.slice(1)}{" "}
             Meeting
@@ -33,16 +33,16 @@ export default function MeetingCard({
         </span>
       </div>
 
-      <div className="mt-5 space-y-2 text-sm text-slate-600">
+      <div className="mt-5 space-y-2 text-sm text-slate-200">
         <p>
-          <span className="font-semibold text-slate-800">
+          <span className="font-semibold text-amber-300">
             Presiding:
           </span>{" "}
           {meeting.presiding}
         </p>
 
         <p>
-          <span className="font-semibold text-slate-800">
+          <span className="font-semibold text-amber-300">
             Conducting:
           </span>{" "}
           {meeting.conducting}
@@ -51,7 +51,7 @@ export default function MeetingCard({
 
       <Link
         href={`/meetings/${meeting.id}`}
-        className="mt-6 inline-block font-semibold text-blue-700 hover:text-blue-900"
+        className="mt-6 inline-block font-semibold text-yellow-500 hover:text-slate-200"
       >
         View Meeting →
       </Link>

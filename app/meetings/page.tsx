@@ -29,13 +29,13 @@ export default async function MeetingsPage() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div>
-        <p className="text-sm font-semibold uppercase tracking-wider text-orange-300">
+        <p className="text-sm font-bold uppercase tracking-wider text-slate-600">
           Meetings
         </p>
-        <h1 className="mt-2 text-3xl font-bold text-slate-200 sm:text-4xl">
+        <h1 className="mt-2 text-3xl font-bold text-zinc-800 sm:text-4xl">
           Sacrament Meetings
         </h1>
-        <p className="mt-4 max-w-2xl text-slate-200">
+        <p className="mt-4 max-w-2xl text-zinc-800">
           View current and past sacrament meeting programs.
         </p>
       </div>

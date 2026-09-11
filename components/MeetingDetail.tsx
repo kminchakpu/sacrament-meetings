@@ -9,12 +9,12 @@ export default function MeetingDetail({
 }: MeetingDetailProps) {
   return (
     <article className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
-      <header className="border-b border-slate-200 pb-6">
-        <p className="text-sm font-semibold uppercase tracking-wider text-orange-300">
+      <header className="border-b border-slate-800 pb-6">
+        <p className="text-sm font-semibold uppercase tracking-wider text-slate-600">
           Sacrament Meeting
         </p>
 
-        <h1 className="mt-2 text-3xl font-bold text-slate-200 sm:text-4xl">
+        <h1 className="mt-2 text-3xl font-bold text-zinc-800 sm:text-4xl">
           {new Date(`${meeting.date}T00:00:00`).toLocaleDateString(
             "en-US",
             {
@@ -23,7 +23,7 @@ export default function MeetingDetail({
           )}
         </h1>
 
-        <div className="mt-4 grid gap-2 text-sm text-slate-200 sm:grid-cols-2">
+        <div className="mt-4 grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
           <p>
             <strong>Meeting Type:</strong>{" "}
             <span className="capitalize">
@@ -45,11 +45,11 @@ export default function MeetingDetail({
         {meeting.announcements &&
           meeting.announcements.length > 0 && (
             <section>
-              <h2 className="text-xl font-bold text-slate-200">
+              <h2 className="text-xl font-bold text-zinc-800">
                 Announcements
               </h2>
 
-              <ul className="mt-3 list-disc space-y-2 pl-6 text-slate-200">
+              <ul className="mt-3 list-disc space-y-2 pl-6 text-slate-700">
                 {meeting.announcements.map((announcement) => (
                   <li key={announcement}>{announcement}</li>
                 ))}
@@ -58,11 +58,11 @@ export default function MeetingDetail({
           )}
 
         <section>
-          <h2 className="text-xl font-bold text-slate-200">
+          <h2 className="text-xl font-bold text-zinc-800">
             Opening
           </h2>
 
-          <div className="mt-3 space-y-2 text-slate-200">
+          <div className="mt-3 space-y-2 text-slate-700">
             <p>
               <strong>Opening Hymn:</strong>{" "}
               {meeting.openingHymn.number} —{" "}
@@ -77,12 +77,12 @@ export default function MeetingDetail({
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-slate-200">
+          <h2 className="text-xl font-bold text-zinc-800">
             Ward Business
           </h2>
 
           {meeting.wardBusiness.length > 0 ? (
-            <ul className="mt-3 list-disc space-y-2 pl-6 text-slate-200">
+            <ul className="mt-3 list-disc space-y-2 pl-6 text-slate-700">
               {meeting.wardBusiness.map((item) => (
                 <li key={item.description}>
                   {item.description}
@@ -90,23 +90,23 @@ export default function MeetingDetail({
               ))}
             </ul>
           ) : (
-            <p className="mt-3 text-slate-200">
+            <p className="mt-3 text-slate-700">
               No ward business scheduled.
             </p>
           )}
 
-          <p className="mt-4 text-slate-200">
+          <p className="mt-4 text-slate-700">
             <strong>Stake Business:</strong>{" "}
             {meeting.stakeBusiness ? "Yes" : "No"}
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-slate-200">
+          <h2 className="text-xl font-bold text-zinc-800">
             Sacrament
           </h2>
 
-          <p className="mt-3 text-slate-200">
+          <p className="mt-3 text-slate-700">
             <strong>Hymn:</strong>{" "}
             {meeting.sacramentHymn.number} —{" "}
             {meeting.sacramentHymn.title}
@@ -114,7 +114,7 @@ export default function MeetingDetail({
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-slate-200">
+          <h2 className="text-xl font-bold text-zinc-800">
             Speakers and Musical Numbers
           </h2>
 
@@ -122,7 +122,7 @@ export default function MeetingDetail({
             {meeting.speakers.map((item, index) => (
               <div
                 key={`${item.name}-${index}`}
-                className="rounded-lg bg-slate-50 p-4"
+                className="rounded-lg bg-slate-500 p-4"
               >
                 <p className="font-semibold text-slate-900">
                   {item.name}
@@ -143,11 +143,11 @@ export default function MeetingDetail({
         </section>
 
         <section>
-          <h2 className="text-xl font-bold text-slate-200">
+          <h2 className="text-xl font-bold text-zinc-800">
             Closing
           </h2>
 
-          <div className="mt-3 space-y-2 text-slate-200">
+          <div className="mt-3 space-y-2 text-slate-700">
             <p>
               <strong>Closing Hymn:</strong>{" "}
               {meeting.closingHymn.number} —{" "}
