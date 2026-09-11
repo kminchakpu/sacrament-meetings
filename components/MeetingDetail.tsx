@@ -122,18 +122,18 @@ export default function MeetingDetail({
             {meeting.speakers.map((item, index) => (
               <div
                 key={`${item.name}-${index}`}
-                className="rounded-lg bg-slate-500 p-4"
+                className="rounded-lg bg-zinc-800 p-4"
               >
-                <p className="font-semibold text-slate-900">
+                <p className="font-semibold text-slate-200">
                   {item.name}
                 </p>
 
-                <p className="mt-1 text-sm capitalize text-blue-700">
+                <p className="mt-1 text-sm capitalize text-amber-300">
                   {item.type.replace("-", " ")}
                 </p>
 
                 {item.topic && (
-                  <p className="mt-2 text-slate-600">
+                  <p className="mt-2 text-slate-200">
                     {item.topic}
                   </p>
                 )}

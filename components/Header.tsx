@@ -17,7 +17,7 @@ export default function Header() {
             Sacrament Meeting Planner
           </Link>
           <p className="font-play mt-1 text-sm text-orange-200">
-            {currentDate}
+           Karu Ward | {currentDate}
           </p>
         </div>
         <NavLinks />

@@ -65,7 +65,13 @@ const meetings: SacramentMeeting[] = [
       number: 181,
       title: "Jesus of Nazareth",
     },
-    speakers: [],
+    speakers: [
+      {
+        name: "President Ibe",
+        topic: "Building Zion",
+        type: "speaker",
+      },
+    ],
     closingHymn: {
       number: 85,
       title: "How Firm a Foundation",

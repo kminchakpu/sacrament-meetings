@@ -1,8 +1,6 @@
 // app/meetings/current/page.tsx
 
-import MeetingDetail from "@/components/MeetingDetail";
 import { getMeetings } from "@/lib/meetings-db";
-import type { SacramentMeeting } from "@/lib/types";
 import { redirect } from "next/navigation";
 
 function getMostRecentSunday(): string {
@@ -10,7 +8,12 @@ function getMostRecentSunday(): string {
   const dayOfWeek = today.getDay();
   const sunday = new Date(today);
   sunday.setDate(today.getDate() - dayOfWeek);
-  return sunday.toISOString().split("T")[0];
+
+  const year = sunday.getFullYear();
+  const month = String(sunday.getMonth() + 1).padStart(2, "0");
+  const day = String(sunday.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
 }
 
 export default function CurrentMeetingPage() {
@@ -21,7 +24,5 @@ export default function CurrentMeetingPage() {
     redirect("/meetings");
   }
 
-  const currentMeeting: SacramentMeeting = meetings[0];
-
-  return <MeetingDetail meeting={currentMeeting} />;
+  redirect(`/meetings/${meetings[0].id}`);
 }

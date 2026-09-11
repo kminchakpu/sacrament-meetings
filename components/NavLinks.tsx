@@ -1,5 +1,4 @@
 "use client";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -24,24 +23,6 @@ export default function NavLinks() {
   const [isOpen, setIsOpen] = useState(false);
 
   const checkIsActive = (href: string) => {
-    if (href === "/") {
-      return pathname === "/";
-    }
-
-    if (href === "/meetings") {
-      return (
-        pathname === "/meetings" ||
-        (
-          pathname.startsWith("/meetings/") &&
-          pathname !== "/meetings/current"
-        )
-      );
-    }
-
-    if (href === "/meetings/current") {
-      return pathname === "/meetings/current";
-    }
-
     return pathname === href;
   };
 
