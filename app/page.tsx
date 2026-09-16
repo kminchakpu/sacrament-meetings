@@ -13,7 +13,7 @@ export default function Home() {
     <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
       <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-orange-500">
+          <p className="text-sm font-semibold uppercase tracking-wider text-slate-500">
             Sacrament Meeting Planner
           </p>
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-800 sm:text-5xl">
