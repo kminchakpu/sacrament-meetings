@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import MeetingDetail from "@/components/MeetingDetail";
-import type { SacramentMeeting } from "@/lib/types";
+import { getMeetingById } from "@/lib/meetings-db";
 import { notFound } from "next/navigation";
 
 interface MeetingPageProps {
@@ -9,25 +9,14 @@ interface MeetingPageProps {
   }>;
 }
 
-async function getMeeting(
-  id: string
-): Promise<SacramentMeeting | null> {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/meetings/${id}`,
-    {
-      cache: "no-store",
-    }
-  );
+async function getMeeting(id: string) {
+  const meetingId = Number(id);
 
-  if (response.status === 404) {
+  if (!Number.isInteger(meetingId) || meetingId <= 0) {
     return null;
   }
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch meeting.");
-  }
-
-  return response.json();
+  return getMeetingById(meetingId);
 }
 
 export async function generateMetadata({

@@ -11,7 +11,6 @@ export async function GET(
   context: RouteContext
 ) {
   const { id } = await context.params;
-
   const meetingId = Number(id);
 
   if (!Number.isInteger(meetingId) || meetingId <= 0) {
@@ -25,7 +24,7 @@ export async function GET(
     );
   }
 
-  const meeting = getMeetingById(meetingId);
+  const meeting = await getMeetingById(meetingId);
 
   if (!meeting) {
     return Response.json(

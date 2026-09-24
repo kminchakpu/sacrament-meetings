@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import MeetingCard from "@/components/MeetingCard";
-import type { SacramentMeeting } from "@/lib/types";
+import MeetingSearch from "@/components/MeetingSearch";
+import Pagination from "@/components/Pagination";
+import {
+  getMeetings,
+  getMeetingsTotalPages,
+} from "@/lib/meetings-db";
 
 export const metadata: Metadata = {
   title: "Sacrament Meetings | Kevin Minchakpu",
@@ -8,23 +13,28 @@ export const metadata: Metadata = {
     "View current and past sacrament meeting programs, including meeting details and information from previous sacrament meetings.",
 };
 
-async function getMeetings(): Promise<SacramentMeeting[]> {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_BASE_URL}/api/meetings`,
-    {
-      cache: "no-store",
-    }
-  );
-
-  if (!response.ok) {
-    throw new Error("Failed to fetch meetings.");
-  }
-
-  return response.json();
+interface MeetingsPageProps {
+  searchParams: Promise<{
+    query?: string;
+    page?: string;
+  }>;
 }
 
-export default async function MeetingsPage() {
-  const meetings = await getMeetings();
+export default async function MeetingsPage({
+  searchParams,
+}: MeetingsPageProps) {
+  const params = await searchParams;
+  const query = params.query ?? "";
+  const parsedPage = Number(params.page);
+  const currentPage =
+    Number.isInteger(parsedPage) && parsedPage > 0
+      ? parsedPage
+      : 1;
+
+  const [meetings, totalPages] = await Promise.all([
+    getMeetings(query, currentPage),
+    getMeetingsTotalPages(query),
+  ]);
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
@@ -39,14 +49,32 @@ export default async function MeetingsPage() {
           View current and past sacrament meeting programs.
         </p>
       </div>
-      <div className="mt-8 grid gap-6 md:grid-cols-2">
-        {meetings.map((meeting) => (
-          <MeetingCard
-            key={meeting.id}
-            meeting={meeting}
+
+      <MeetingSearch />
+
+      {meetings.length > 0 ? (
+        <>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            {meetings.map((meeting) => (
+              <MeetingCard
+                key={meeting.id}
+                meeting={meeting}
+              />
+            ))}
+          </div>
+
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
           />
-        ))}
-      </div>
+        </>
+      ) : (
+        <div className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-6">
+          <p className="text-zinc-700">
+            No meetings found.
+          </p>
+        </div>
+      )}
     </main>
   );
 }

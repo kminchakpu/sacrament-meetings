@@ -1,6 +1,4 @@
-// app/meetings/current/page.tsx
-
-import { getMeetings } from "@/lib/meetings-db";
+import { getMeetingsByDate } from "@/lib/meetings-db";
 import { redirect } from "next/navigation";
 
 function getMostRecentSunday(): string {
@@ -16,9 +14,9 @@ function getMostRecentSunday(): string {
   return `${year}-${month}-${day}`;
 }
 
-export default function CurrentMeetingPage() {
+export default async function CurrentMeetingPage() {
   const sunday = getMostRecentSunday();
-  const meetings = getMeetings(sunday);
+  const meetings = await getMeetingsByDate(sunday);
 
   if (meetings.length === 0) {
     redirect("/meetings");
