@@ -23,7 +23,7 @@ interface MeetingsPageProps {
 export default async function MeetingsPage({
   searchParams,
 }: MeetingsPageProps) {
-  const params = await searchParams;
+   const params = await searchParams;
   const query = params.query ?? "";
   const parsedPage = Number(params.page);
   const currentPage =
