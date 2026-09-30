@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { auth } from "@/auth";
 import EditMeetingForm from "@/components/EditMeetingForm";
 import { getMeetingById } from "@/lib/meetings-db";
 interface EditMeetingPageProps {
@@ -14,6 +15,10 @@ export const metadata: Metadata = {
 export default async function EditMeetingPage({
   params,
 }: EditMeetingPageProps) {
+  const session = await auth();
+  if (!session?.user) {
+    redirect("/login");
+  }
   const { id } = await params;
   const meetingId = Number(id);
   if (!Number.isInteger(meetingId) || meetingId <= 0) {
