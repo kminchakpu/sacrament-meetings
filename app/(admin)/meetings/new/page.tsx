@@ -1,11 +1,16 @@
+import { auth } from "@/auth";
+import { redirect } from "next/navigation";
 import type { Metadata } from "next";
-
+import MeetingForm from "@/components/MeetingForm";
 export const metadata: Metadata = {
   title: "Create Meeting",
   description: "Create a new sacrament meeting program.",
 };
-
-export default function NewMeetingPage() {
+export default async function NewMeetingPage() {
+  const session = await auth();
+  if (!session?.user) {
+    redirect("/login");
+  }
   return (
     <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
@@ -16,8 +21,9 @@ export default function NewMeetingPage() {
           Create Meeting
         </h1>
         <p className="mt-4 text-zinc-700">
-          Create Meeting — Coming in Week 04
+          Enter the sacrament meeting information below.
         </p>
+        <MeetingForm />
       </div>
     </main>
   );
